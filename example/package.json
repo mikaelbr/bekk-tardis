@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "test": "mocha --compilers js:babel/register src/*-test.js",
+    "test": "mocha --compilers js:babel/register src/tests/*-test.js",
     "build": "browserify src/app.js -o dist/build.js",
     "watch": "watch 'npm run build' ./src"
   },
   "author": "Mikael Brevik",
   "license": "MIT",
   "browserify": {
-    "transform": [ "babelify" ]
+    "transform": [
+      "babelify"
+    ]
   },
   "dependencies": {
     "babelify": "^6.3.0",
@@ -24,6 +26,7 @@
   "devDependencies": {
     "babel": "^5.8.23",
     "immutable": "^3.7.4",
+    "jsdom": "^6.3.0",
     "mocha": "^2.3.0",
     "watch": "^0.16.0"
   }

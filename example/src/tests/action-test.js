@@ -1,6 +1,6 @@
 var assert = require('assert');
 var Immutable = require('immutable');
-var actions = require('./actions');
+var actions = require('../actions');
 
 var validate = actions.fn.findWinner;
 

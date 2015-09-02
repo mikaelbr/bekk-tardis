@@ -1,18 +1,21 @@
 var assert = require('assert');
-var Immutable = require('immutable');
-var actions = require('./actions');
+var immstruct = require('immstruct');
+var actions = require('../actions');
 
-var validate = actions.fn.findWinner;
+var Main = require('../main');
+var React = require('react');
 
-describe.only('board', function () {
+describe('integration tests', function () {
+  var history = getHistory();
+  it('should render winning screen', function () {
+    history.forEach(function (state, key) {
+      var structure = immstruct(state);
+      var isLast = (key === history.length - 1);
 
-  var history = Immutable.fromJS(getHistory());
-  var expectedResults = Immutable.Repeat(false, 9).concat('No one');
-
-  history.forEach(function (state, key) {
-    var expected = expectedResults.get(key)
-    it(`should have move ${key} ${!expected ? 'not return' : 'return "no body" as'} a winner`, function () {
-      assert.equal(validate(state.get('board')), expected);
+      assert.equal(React.renderToString(Main({
+        state: structure.cursor(),
+        actions
+      })).indexOf('Game finished') !== -1, isLast);
     });
   });
 });
@@ -206,7 +209,7 @@ function getHistory () {
             [
                 "x",
                 "x",
-                "o"
+                "x"
             ]
         ]
     }

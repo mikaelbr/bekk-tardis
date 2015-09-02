@@ -28,8 +28,8 @@ module.exports = actions
       board, transpose(board), diagonal(board), diagonal(board.reverse())
     ].map(v => v.find(threeInRow)).filter(v => !!v)[0];
     if (checks) return checks.get(0);
-    // const flattened = board.flatten(true);
-    // if (flattened.count(identity) === flattened.count()) return 'No one';
+    const flattened = board.flatten(true);
+    if (flattened.count(identity) === flattened.count()) return 'No one';
     return false;
   })
   .register(function reset (board) {
