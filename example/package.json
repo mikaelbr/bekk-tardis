@@ -1,0 +1,30 @@
+{
+  "name": "tardis-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "mocha --compilers js:babel/register src/*-test.js",
+    "build": "browserify src/app.js -o dist/build.js",
+    "watch": "watch 'npm run build' ./src"
+  },
+  "author": "Mikael Brevik",
+  "license": "MIT",
+  "browserify": {
+    "transform": [ "babelify" ]
+  },
+  "dependencies": {
+    "babelify": "^6.3.0",
+    "immstruct": "^2.0.0",
+    "markupify": "^0.1.0",
+    "omnipotent": "^1.1.0",
+    "omniscient": "^3.3.0",
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "immutable": "^3.7.4",
+    "mocha": "^2.3.0",
+    "watch": "^0.16.0"
+  }
+}

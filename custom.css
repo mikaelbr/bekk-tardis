@@ -1,0 +1,17 @@
+.remark-slide .remark-slide-content.cover {
+  background-size: cover !important;
+  background-position: top left !important;
+}
+
+
+.tardis-slide {
+    position: relative;
+}
+
+.tardis-img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -85px;
+  margin-top: -85px;
+}

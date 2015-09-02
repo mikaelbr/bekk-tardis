@@ -1,0 +1,44 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, main, .tic-tac-toe, .board {
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  position: relative;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.cell {
+  border: 10px solid #1b1b1b;
+  width: 33.3333%;
+  height: 33.3333%;
+  font-size: 40vh;
+  line-height: 0.5;
+  text-align: center;
+  color: #262626;
+  overflow: hidden;
+}
+
+
+.winner {
+  position: absolute;
+  background: #1b1b1b;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  color: #297f79;
+  bottom: 0;
+  z-index: 999;
+  padding: 50px;
+}

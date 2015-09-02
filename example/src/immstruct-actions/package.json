@@ -1,0 +1,54 @@
+{
+  "name": "immstruct-actions",
+  "version": "1.0.0",
+  "description": "A function dispatcher central to invoke actions for manipulating immstruct data.",
+  "main": "actions.js",
+  "dependencies": {
+    "lodash.assign": "^3.2.0"
+  },
+  "devDependencies": {
+    "browserify": "^8.1.1",
+    "chai": "^1.9.2",
+    "derequire": "^1.2.0",
+    "dox": "^0.6.1",
+    "doxme": "git://github.com/mikaelbr/doxme.git#dev",
+    "immstruct": "^2.0.0",
+    "immutable": "^3.0.2",
+    "mocha": "^2.0.1",
+    "uglify-js": "^2.4.15"
+  },
+  "scripts": {
+    "test": "mocha -R spec tests.js",
+    "test-watch": "mocha -G -w -R min tests.js",
+    "build-docs": "cat unstore.js | dox -r | doxme > api.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/omniscientjs/unstore.git"
+  },
+  "keywords": [
+    "immstruct",
+    "immutable",
+    "immutable.js",
+    "omniscient.js",
+    "immutable",
+    "function dispatcher"
+  ],
+  "browserify-shim": {
+    "react": "global:React"
+  },
+  "author": {
+    "name": "Mikael Brevik"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/omniscientjs/unstore/issues"
+  },
+  "homepage": "https://github.com/omniscientjs/unstore",
+  "readme": "Omnipotent [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url] [![Gitter][gitter-image]][gitter-url]\n=========\n\nOmnipotent is a library combining [Omniscient.js](https://github.com/omniscientjs/omniscient) and [immstruct](https://github.com/omniscientjs/immstruct), for providing opinionated helpers and tools for easier use.\n\nInstall `omnipotent` through npm\n\n```shell\n$ npm install --save omnipotent\n```\n\n## Omniscient\n\n> Omniscient is all about making composable UIs in a functional manner. Having pure, referentially transparent components that gives a simpler static mental model, much like the static HTML - but bringing the views in a more powerful context in a programming language. Views will still be declarative and expressive, but without having to work with clunky and weird DSLs/template engines.\n\nRead more about Omniscient.js in the [repository README](https://github.com/omniscientjs/omniscient) or our [homepage](http://omniscientjs.github.io/).\n\n## Decorators\n\nDecorators are modifiers for functions or components. Without modifying the original target, it extends and creates a new entity which has additional features or different behavior. Read more about decorators in [Reginald Braithwaite book Allongé](https://leanpub.com/javascriptallongesix/read#decorators).\n\n### `ignore(fields : string|Array<string>, component : Component)`\n\nThe `ignore` decorator is used to create components which ignore change on\ncertain property names on props passed to a component.\n\n#### Include\n\nRequire the decorator by doing:\n\n```js\nvar ignore = require('omnipotent/decorator/ignore');\n// or\nvar ignore = require('omnipotent').decorator.ignore;\n```\n\n#### Usage\n\n```js\nvar struct = immstruct({\n  hero: 'Natasha Romanoff',\n  ignorable: 'Cain Marko'\n});\n\nvar Title = component('View', ({hero, ignore}) =>\n  <h1>{hero.deref()} vs. {ignore.deref()}</h1>);\n\nvar IgnoredTitle = ignore('ignorable', Title);\n\nfunction render() {\n  React.render(\n    IgnoredTitle({ hero: struct.cursor('hero'), ignore: struct.cursor('ignorable') }),\n    document.getElementById('content')\n  );\n}\n\nrender();\nstruct.on('swap', render);\n\n// Will update\nstruct.cursor().set('hero', 'Natalia Romanova');\n// Will not update\nstruct.cursor().set('ignorable', 'Juggernaut');\n// Will update\nstruct.cursor().set('hero', 'Black Widow');\n```\n\n## Other Helpers\n\nOther helpers are non-catogarized helpers that you can use to ease your development with Omniscient.js and immstruct.\n\n### Component Factory with JSX as default\n\nMany use JSX as default with Omniscient.js. You can create your own module using `withDefaults` on Omniscient with `jsx: true`, but then you'd have to use relative paths or scoped paths in your application. For easier use, you can use omnipotents jsx-defaulted helper.\n\n#### Include\n\n```js\nvar component = require('omnipotent/helper/jsx-component');\n// or\nvar component = require('omnipotent').jsxComponent;\n```\n\n#### Usage\n\n```jsx\nvar component = require('omnipotent/helper/jsx-component');\nvar View = component(() => <h1>Hello!</h1>);\nReact.render(<View />, document.getElementById('content'));\n```\n\n## License\n\n[MIT License](http://en.wikipedia.org/wiki/MIT_License)\n\n[npm-url]: https://npmjs.org/package/omnipotent\n[npm-image]: http://img.shields.io/npm/v/omnipotent.svg?style=flat\n\n[travis-url]: http://travis-ci.org/omniscientjs/omnipotent\n[travis-image]: http://img.shields.io/travis/omniscientjs/omnipotent.svg?style=flat\n\n[depstat-url]: https://gemnasium.com/omniscientjs/omnipotent\n[depstat-image]: http://img.shields.io/gemnasium/omniscientjs/omnipotent.svg?style=flat\n\n[gitter-url]: https://gitter.im/omniscientjs/omniscient?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge\n[gitter-image]: https://badges.gitter.im/Join%20Chat.svg\n",
+  "readmeFilename": "README.md",
+  "_id": "immstruct-actions@1.0.0",
+  "_shasum": "a5ca42db3a6a79df99ea06c6a0ae0e1b6a05e4c8",
+  "_from": "../../../repos/immstruct-actions",
+  "_resolved": "file:../../../repos/immstruct-actions"
+}
