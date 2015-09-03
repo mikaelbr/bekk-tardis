@@ -6,6 +6,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel/register src/tests/*-test.js",
     "build": "browserify src/app.js -o dist/build.js",
+    "postbuild": "browserify src/replay.js -o dist/replay.js",
     "watch": "watch 'npm run build' ./src"
   },
   "author": "Mikael Brevik",

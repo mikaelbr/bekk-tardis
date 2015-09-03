@@ -16,4 +16,6 @@
     * Utover å være veldig kult, betyr det jo nødvendigvis at dersom vi får en
       feil, kan vi reprodusere den. Gitt samme koden og samme tilstand vil det
       feile på samme måte. Og vi med veldig høy sannsynlighet hvor feilen ligger.
-    
+  8. Introdusere tilstandsvisningen.
+  9. Endre på tilstanden via tilstandsvisningen.
+  10. Kopiere over tilstanden til app.js og restart
