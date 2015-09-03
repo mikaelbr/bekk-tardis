@@ -54,6 +54,8 @@ class: center middle
 # Kommentar?
 Twitter *@mikaelbrevik* eller snakk med meg i kveld!
 
+Kode/Slides: https://github.com/mikaelbr/bekk-tardis
+
 ---
 class: center middle
 
