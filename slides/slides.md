@@ -53,3 +53,8 @@ class: center middle
 
 # Kommentar?
 Twitter *@mikaelbrevik* eller snakk med meg i kveld!
+
+---
+class: center middle
+
+# Send gjerne tilbakemelding!
