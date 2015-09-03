@@ -1,7 +1,8 @@
 var React = require('react');
 var component = require('omniscient');
+var immutable = require('immutable');
 var immstruct = require('immstruct');
-var markupify = require('markupify');
+var markupify = require('./markupify');
 
 var internalState = immstruct({
   currentRevision: 1,
@@ -100,7 +101,25 @@ var StateViewer = component(function StateViewer({ tardisData, history, structur
     }, `Show ${isStateHistory ? 'current state' : 'history'}`),
     div({
       contentEditable: true,
-      onKeyPress: (e) => e.preventDefault(),
+      onKeyPress: function (e) {
+        if (isStateHistory) {
+          e.preventDefault();
+        }
+      },
+      onKeyUp: function (e) {
+        if (isStateHistory) {
+          return e.preventDefault();
+        }
+        try {
+          var newState = immutable.fromJS(JSON.parse(e.currentTarget.textContent));
+          var cursor = structure.cursor();
+          if (!immutable.is(cursor, newState)) {
+            cursor.update(() => newState);
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      },
       dangerouslySetInnerHTML: {__html: html}
     })
   );

@@ -5,18 +5,7 @@ module.exports = function connect (slideshow) {
   Myo.connect();
   Myo.on('pose', function (poseName) {
     console.log(poseName);
-    // if (poseName === 'double_tap') {
-    //   this.vibrate('short');
-    //   if (!this.locked) {
-    //     this.lock();
-    //     this.vibrate('short');
-    //   } else {
-    //     this.unlock();
-    //     this.vibrate('medium');
-    //   }
-    // }
-    // else
-    if (poseName === 'wave_in') {
+    if (poseName === 'wave_in' || poseName === 'wave_out') {
       this.vibrate('short');
       slideshow.gotoPreviousSlide();
     }
@@ -26,10 +15,8 @@ module.exports = function connect (slideshow) {
     }
   });
 
-
   Myo.on('paired', function(){
     console.log('Myo connected');
-    // this.vibrate('long');
     Myo.setLockingPolicy('none');
   });
 

@@ -23,9 +23,8 @@ function setupSlideshow () {
     }
     console.log("Starting orientation")
     gesture.zeroOrientation();
-
     var w = window.innerWidth / 2;
-    var h = window.innerHeight / 2 ;
+    var h = window.innerHeight / 2;
     gesture.on('orientation', function(data){
       img.style.transform = `translate(${-data.z * w}px, ${-data.y * w}px)`;
     })

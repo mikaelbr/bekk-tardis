@@ -16,15 +16,40 @@ class: tardis-slide
 ---
 class: agenda
 
-# Del 1: Grunnleggende Interaksjon
+# Kort re-cap
 
- * Historie
- * Hva er Web?
- * Apper, været og likes
+ * Immutabel data
+ * Rene komponenter
 
 ---
+class: middle
 
-# Foo bar
+```js
+const myAppState = immutable({ name: 'John Smith' });
+const newAppState = myAppState.set('name', 'The Doctor');
+
+// Can access myAppState and newAppState
+```
+
+---
+class: middle
+
+```js
+const NameCard = component(({name}) => hgroup({},
+  h1({}, 'Hello! My name is:'),
+  h2({}, name)
+));
+```
+
+---
+class: center middle
+
+# Så.. Hva med det?
+Demo
 
 
-fds
+---
+class: center middle
+
+# Kommentar?
+Twitter *@mikaelbrevik* eller snakk med meg i kveld!
