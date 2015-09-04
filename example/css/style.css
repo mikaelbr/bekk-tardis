@@ -27,6 +27,7 @@ html, body, main, .tic-tac-toe, .board {
   line-height: 0.5;
   text-align: center;
   color: #262626;
+  pointer-events: all;
   overflow: hidden;
 }
 
