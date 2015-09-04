@@ -17,6 +17,8 @@ var structure = immstruct.withHistory({
   ]
 });
 
+React.initializeTouchEvents(true);
+
 function render () {
   React.render(Main({
     state: structure.cursor(),
