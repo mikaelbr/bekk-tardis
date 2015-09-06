@@ -29412,6 +29412,8 @@ var structure = immstruct.withHistory({
   board: [['', '', ''], ['', '', ''], ['', '', '']]
 });
 
+React.initializeTouchEvents(true);
+
 function render() {
   React.render(Main({
     state: structure.cursor(),

@@ -45,14 +45,14 @@ const NameCard = component(({name}) => hgroup({},
 class: center middle
 
 # Så.. Hva med det?
-Demo
+[Demo](http://git.mikaelb.net/bekk-tardis/example/)
 
 
 ---
 class: center middle
 
 # Kommentar?
-Twitter *@mikaelbrevik* eller snakk med meg i kveld!
+Twitter *@mikaelbrevik*!
 
 Kode/Slides: https://github.com/mikaelbr/bekk-tardis
 

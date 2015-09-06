@@ -17,6 +17,8 @@ function setupSlideshow () {
     var img = document.querySelector('.tardis-img');
     var gesture = Myo.myos[0];
 
+    if (!gesture || !gesture.connected) { return; }
+
     if (slide.properties.name !== 'tardis') {
       gesture.off('orientation');
       return;

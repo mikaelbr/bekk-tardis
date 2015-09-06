@@ -393,7 +393,7 @@ var myo = require('./remark-myo');
 setupSlideshow();
 
 function setupSlideshow() {
-  var data = "class: front-page\n\n# Forutsigbar testing og tidsreiser\n\nMikael Brevik\n\n04/09/2015\n\n---\nbackground-image: url(assets/space.jpg)\nname: tardis\nclass: tardis-slide\n\n<img src=\"assets/tardis.png\" alt=\"Tardis\" class=\"tardis-img\" />\n\n---\nclass: agenda\n\n# Kort re-cap\n\n * Immutabel data\n * Rene komponenter\n\n---\nclass: middle\n\n```js\nconst myAppState = immutable({ name: 'John Smith' });\nconst newAppState = myAppState.set('name', 'The Doctor');\n\n// Can access myAppState and newAppState\n```\n\n---\nclass: middle\n\n```js\nconst NameCard = component(({name}) => hgroup({},\n  h1({}, 'Hello! My name is:'),\n  h2({}, name)\n));\n```\n\n---\nclass: center middle\n\n# Så.. Hva med det?\nDemo\n\n\n---\nclass: center middle\n\n# Kommentar?\nTwitter *@mikaelbrevik* eller snakk med meg i kveld!\n\nKode/Slides: https://github.com/mikaelbr/bekk-tardis\n\n---\nclass: center middle\n\n# Send gjerne tilbakemelding!\n";
+  var data = "class: front-page\n\n# Forutsigbar testing og tidsreiser\n\nMikael Brevik\n\n04/09/2015\n\n---\nbackground-image: url(assets/space.jpg)\nname: tardis\nclass: tardis-slide\n\n<img src=\"assets/tardis.png\" alt=\"Tardis\" class=\"tardis-img\" />\n\n---\nclass: agenda\n\n# Kort re-cap\n\n * Immutabel data\n * Rene komponenter\n\n---\nclass: middle\n\n```js\nconst myAppState = immutable({ name: 'John Smith' });\nconst newAppState = myAppState.set('name', 'The Doctor');\n\n// Can access myAppState and newAppState\n```\n\n---\nclass: middle\n\n```js\nconst NameCard = component(({name}) => hgroup({},\n  h1({}, 'Hello! My name is:'),\n  h2({}, name)\n));\n```\n\n---\nclass: center middle\n\n# Så.. Hva med det?\n[Demo](http://git.mikaelb.net/bekk-tardis/example/)\n\n\n---\nclass: center middle\n\n# Kommentar?\nTwitter *@mikaelbrevik*!\n\nKode/Slides: https://github.com/mikaelbr/bekk-tardis\n\n---\nclass: center middle\n\n# Send gjerne tilbakemelding!\n";
   document.querySelector('#source').innerHTML = data;
 
   var slideshow = remark.create({
@@ -405,6 +405,10 @@ function setupSlideshow() {
   slideshow.on('showSlide', function (slide) {
     var img = document.querySelector('.tardis-img');
     var gesture = Myo.myos[0];
+
+    if (!gesture || !gesture.connected) {
+      return;
+    }
 
     if (slide.properties.name !== 'tardis') {
       gesture.off('orientation');
