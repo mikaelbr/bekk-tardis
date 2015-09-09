@@ -11,3 +11,8 @@ tardis(structure, '#tardis');
 // structure: Application state created by immstruct
 // '#tardis': DOM Entry point (string selector or DOM object)
 ```
+
+
+## Running example
+
+See running [example of TARDIS](git.mikaelb.net/bekk-tardis/example)
