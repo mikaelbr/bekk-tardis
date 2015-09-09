@@ -15,4 +15,4 @@ tardis(structure, '#tardis');
 
 ## Running example
 
-See running [example of TARDIS](git.mikaelb.net/bekk-tardis/example)
+See running [example of TARDIS](http://git.mikaelb.net/bekk-tardis/example) or in [replay mode](http://git.mikaelb.net/bekk-tardis/example/replay.html)
