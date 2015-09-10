@@ -29477,26 +29477,23 @@ function unstore (initialActions, subscribers) {
         assign([], storedSubscribers)
       );
     },
-
-    fn: storedActions
   };
+
+  Object.defineProperty(methods, 'fn', {
+    get: function () {
+      return Object.keys(storedActions).reduce(function (acc, fnName) {
+        acc[fnName] = methods.invoke.bind(methods, fnName);
+        return acc;
+      }, {});
+    },
+    enumerable: true,
+    configurable: false,
+  });
 
   return methods;
 };
 
 module.exports = unstore();
-
-function addAllActionsAsAccessors (newMethods, actions) {
-  Object.keys(actions).forEach(function (action) {
-    Object.defineProperty(newMethods, action, {
-      enumerable: true,
-      writable: false,
-      configurable: false,
-      value: actions[action]
-    });
-  });
-  return newMethods;
-}
 
 function updateOrInvoke (actions, args, context) {
   var invoke = function (args) {
@@ -29577,11 +29574,11 @@ var Cell = component(function (_ref) {
   var disabled = _ref.disabled;
   var cell = _ref.cell;
   var board = _ref.board;
-  var actions = _ref.actions;
+  var change = _ref.actions.change;
   return a({
     className: 'cell',
     onClick: function onClick() {
-      return !disabled && actions.invoke('change', cell, board);
+      return !disabled && change(cell, board);
     }
   }, cell.valueOf());
 });
@@ -29604,12 +29601,12 @@ var Board = component(function (_ref2) {
 
 var Winner = component(function (_ref3) {
   var board = _ref3.board;
-  var actions = _ref3.actions;
+  var reset = _ref3.actions.reset;
   var winner = _ref3.winner;
   return a({
     className: 'winner',
     onClick: function onClick() {
-      actions.invoke('reset', board);
+      return reset(board);
     }
   }, h1({}, 'Game finished! Winner: ' + winner), p({}, 'Click to restart'));
 });
@@ -29617,14 +29614,14 @@ var Winner = component(function (_ref3) {
 var App = component(function (_ref4) {
   var state = _ref4.state;
   var actions = _ref4.actions;
+  var findWinner = actions.findWinner;
 
   var board = state.cursor('board');
-  var winner = actions.invoke('findWinner', board);
-  var winnerNote = !winner ? null : Winner({ winner: winner, board: board, actions: actions });
+  var winner = findWinner(board);
 
   return div({
     className: 'tic-tac-toe'
-  }, winnerNote, Board({
+  }, !winner ? null : Winner({ winner: winner, board: board, actions: actions }), Board({
     board: board,
     actions: actions,
     disabled: !!winner

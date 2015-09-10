@@ -81,26 +81,23 @@ function unstore (initialActions, subscribers) {
         assign([], storedSubscribers)
       );
     },
-
-    fn: storedActions
   };
+
+  Object.defineProperty(methods, 'fn', {
+    get: function () {
+      return Object.keys(storedActions).reduce(function (acc, fnName) {
+        acc[fnName] = methods.invoke.bind(methods, fnName);
+        return acc;
+      }, {});
+    },
+    enumerable: true,
+    configurable: false,
+  });
 
   return methods;
 };
 
 module.exports = unstore();
-
-function addAllActionsAsAccessors (newMethods, actions) {
-  Object.keys(actions).forEach(function (action) {
-    Object.defineProperty(newMethods, action, {
-      enumerable: true,
-      writable: false,
-      configurable: false,
-      value: actions[action]
-    });
-  });
-  return newMethods;
-}
 
 function updateOrInvoke (actions, args, context) {
   var invoke = function (args) {

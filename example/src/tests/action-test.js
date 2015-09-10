@@ -1,3 +1,5 @@
+'use strict';
+
 var assert = require('assert');
 var Immutable = require('immutable');
 var actions = require('../actions');

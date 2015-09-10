@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react');
 var component = require('omniscient');
 var immutable = require('immutable');

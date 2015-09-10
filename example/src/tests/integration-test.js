@@ -1,3 +1,5 @@
+'use strict';
+
 var assert = require('assert');
 var immstruct = require('immstruct');
 var actions = require('../actions');

@@ -20,7 +20,7 @@ React.initializeTouchEvents(true);
 function render () {
   React.render(Main({
     state: structure.cursor(),
-    actions: structureActions
+    actions: structureActions.fn
   }), document.querySelector('#game'));
 }
 

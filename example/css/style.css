@@ -33,7 +33,6 @@ html, body, main, .tic-tac-toe, .board {
   cursor: pointer;
 }
 
-
 .winner {
   position: absolute;
   background: #1b1b1b;
