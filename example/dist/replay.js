@@ -29571,13 +29571,14 @@ var _React$DOM = React.DOM;
 var div = _React$DOM.div;
 var h1 = _React$DOM.h1;
 var p = _React$DOM.p;
+var a = _React$DOM.a;
 
 var Cell = component(function (_ref) {
   var disabled = _ref.disabled;
   var cell = _ref.cell;
   var board = _ref.board;
   var actions = _ref.actions;
-  return div({
+  return a({
     className: 'cell',
     onClick: function onClick() {
       return !disabled && actions.invoke('change', cell, board);

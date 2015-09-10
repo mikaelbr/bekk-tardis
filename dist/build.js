@@ -405,7 +405,6 @@ function setupSlideshow() {
   slideshow.on('showSlide', function (slide) {
     var img = document.querySelector('.tardis-img');
     var gesture = Myo.myos[0];
-
     if (!gesture || !gesture.connected) {
       return;
     }

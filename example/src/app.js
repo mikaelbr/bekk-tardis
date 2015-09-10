@@ -4,8 +4,6 @@ var component = require('omniscient');
 var immstruct = require('immstruct');
 var React = require('react');
 
-var {div, h1, p} = React.DOM;
-
 var structureActions = require('./actions');
 var Main = require('./main');
 

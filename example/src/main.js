@@ -2,10 +2,10 @@
 
 var component = require('omniscient');
 var React = require('react');
-var {div, h1, p} = React.DOM;
+var {div, h1, p, a} = React.DOM;
 
 var Cell = component(({disabled, cell, board, actions}) => (
-  div({
+  a({
     className: 'cell',
     onClick: () => !disabled && actions.invoke('change', cell, board)
   },
