@@ -29636,7 +29636,7 @@ var Winner = component(function (_ref3) {
   var board = _ref3.board;
   var actions = _ref3.actions;
   var winner = _ref3.winner;
-  return div({
+  return a({
     className: 'winner',
     onClick: function onClick() {
       actions.invoke('reset', board);

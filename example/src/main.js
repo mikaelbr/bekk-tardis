@@ -28,7 +28,7 @@ var Board = component(({disabled, board, actions}) => (
 ));
 
 var Winner = component(({board, actions, winner}) => (
-  div({
+  a({
     className: 'winner',
     onClick: function () {
       actions.invoke('reset', board);

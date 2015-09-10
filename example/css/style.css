@@ -22,6 +22,8 @@ html, body, main, .tic-tac-toe, .board {
 .cell {
   border: 10px solid #1b1b1b;
   width: 33.3333%;
+  background: #fff;
+  outline: 0;
   height: 33.3333%;
   font-size: 40vh;
   line-height: 0.5;
@@ -42,4 +44,5 @@ html, body, main, .tic-tac-toe, .board {
   bottom: 0;
   z-index: 999;
   padding: 50px;
+  cursor: pointer;
 }
